@@ -1,7 +1,11 @@
 <template>
   <div class="home">
-    <BlogPost />
-    <BlogPost />
+    <BlogPost :post="welcomeScreen" />
+    <BlogPost
+      :post="post"
+      v-for="(post, index) in sampleBlogPost"
+      :key="index"
+    />
   </div>
 </template>
 
