@@ -1,98 +1,166 @@
 <template>
-<header>
-    <nav class= "container"> 
-        <div class="branding">
-            <router-link class="header" :to="{ name: 'Home'}">
-                CapitalBlog
-            </router-link>
-        </div>
-        <div class="nav-links">
-            <ul>
-                <router-link class= "link" to="#">Home</router-link>
-                <router-link class= "link" to="#">Blogs</router-link>
-                <router-link class= "link" to="#">Create Post</router-link>
-                <router-link class= "link" to="#">Login/Register</router-link> 
-            </ul>
-        </div>
+  <header>
+    <nav class="container">
+      <div class="branding">
+        <router-link class="header" :to="{ name: 'Home' }">
+          CapitalBlog
+        </router-link>
+      </div>
+      <div class="nav-links">
+        <ul v-show="!mobile">
+          <router-link class="link" to="#">Home</router-link>
+          <router-link class="link" to="#">Blogs</router-link>
+          <router-link class="link" to="#">Create Post</router-link>
+          <router-link class="link" to="#">Login/Register</router-link>
+        </ul>
+      </div>
     </nav>
-    <menuIcon class="menu-icon"/>
-    <transition name= "mobile-nav">
-            <ul>
-                <router-link class= "link" to="#">Home</router-link>
-                <router-link class= "link" to="#">Blogs</router-link>
-                <router-link class= "link" to="#">Create Post</router-link>
-                <router-link class= "link" to="#">Login/Register</router-link> 
-            </ul>
+
+    <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile" />
+    <transition name="mobile-nav">
+      <ul name="mobile-nav" v-show="mobileNav">
+        <router-link class="link" to="#">Home</router-link>
+        <router-link class="link" to="#">Blogs</router-link>
+        <router-link class="link" to="#">Create Post</router-link>
+        <router-link class="link" to="#">Login/Register</router-link>
+      </ul>
     </transition>
-   
-</header>    
+  </header>
 </template>
 
 <script>
-import menuIcon from '../assets/Icons/bars-regular.svg';
+import menuIcon from "../assets/Icons/bars-regular.svg";
 export default {
-    name: 'navigation',
-    components:{
-        menuIcon
-    }
-
-}
+  name: "navigation",
+  components: {
+    menuIcon,
+  },
+  data() {
+    return {
+      mobile: null,
+      mobileNav: null,
+      windowWidth: null,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.checkScreen);
+    this.checkScreen();
+  },
+  methods: {
+    checkScreen() {
+      this.windowWidth = this.windowWidth.innerWidth;
+      if (this.windowWidth <= 750) {
+        this.mobile = true;
+        return;
+      }
+      this.mobile = false;
+      this.mobileNav = false;
+      return;
+    },
+    toggleMobileNav() {
+      this.mobileNav = !this.mobileNav;
+    },
+  },
+};
 </script>
 
 
-<style lang="scss" scoped> 
-header{
-    background-color: #fff;
-    padding: 0 25;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0), 0 2px 4px -1px rgba(0,0,0,0.06);
-    z-index: 99;
-}
-.link{
+<style lang="scss" scoped>
+header {
+  background-color: #fff;
+  padding: 0 25;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 99;
+
+  .link {
     font-weight: 500;
     padding: 0 8px;
-    transition: .3s color ease;
+    transition: 0.3s color ease;
 
-    &:hover{
-        color: #1eb8b8;
+    &:hover {
+      color: #1eb8b8;
     }
-}
-nav{
+  }
+  nav {
     display: flex;
     padding: 25px 0;
 
-    .branding{
-        display: flex;
-        align-items: center;
+    .branding {
+      display: flex;
+      align-items: center;
 
-        .header{
-            font-weight: 600;
-            font-size: 24px;
-            color: #000;
-            text-decoration: none;
-        }
+      .header {
+        font-weight: 600;
+        font-size: 24px;
+        color: #000;
+        text-decoration: none;
+      }
     }
 
-    .nav-links{
-        position: relative;
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: flex-end;
-    }
+    .nav-links {
+      position: relative;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-end;
 
-    .ul{
+      .ul {
         margin-right: 32px;
 
-        .link{
-            margin-right: 32;
+        .link {
+          margin-right: 32px;
         }
-        
-        .link:last-child{
-            margin-right: 0;
+
+        .link:last-child {
+          margin-right: 0;
         }
+      }
     }
-      
+  }
 
+  .menu-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 32px;
+    right: 25px;
+    height: 25px;
+    width: auto;
+  }
+
+  .mobile-nav {
+    padding: 20px;
+    width: 70%;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    background-color: #303030;
+    top: 0;
+    left: 0;
+
+    .link {
+      padding: 15px 0;
+      color: #fff;
+    }
+  }
+
+  .mobile-nav-enter-active,
+  .mobile-nav-leave-active {
+    transition: all 1s ease;
+  }
+
+  .mobile-nav-enter {
+    transform: translateX(-250px);
+  }
+
+  .mobile-nav-enter-to {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-leave-to {
+    transform: translateX(-250px);
+  }
 }
-
 </style>
