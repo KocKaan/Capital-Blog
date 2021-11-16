@@ -3,16 +3,17 @@
     <div class="app">
       <Navigation />
       <router-view />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
-
-import Navigation from './components/Navigation';
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 export default {
   name: "app",
-  components: {Navigation},
+  components: { Navigation, Footer },
   data() {
     return {};
   },
