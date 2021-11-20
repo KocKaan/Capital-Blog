@@ -18,10 +18,9 @@
           <password class="icon" />
         </div>
       </div>
-      <router-link
-        class="forgot-password"
-        :to="{ name: `ForgotPassword` }"
-      ></router-link>
+      <router-link class="forgot-password" :to="{ name: `ForgotPassword` }"
+        >Forgot Password?</router-link
+      >
       <button>Sign In</button>
 
       <div class="angle"></div>

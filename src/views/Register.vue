@@ -3,8 +3,8 @@
     <form class="register">
       <p class="login-register">
         Already have Account?
-        <router-link router="router-link" :to="{ name: `Register` }"
-          >Register</router-link
+        <router-link router="router-link" :to="{ name: `Login` }"
+          >Login</router-link
         >
       </p>
       <h2>Create your Capital Blog Account</h2>
