@@ -23,6 +23,8 @@
 
 <script>
 import email from "../assets/Icons/envelope-regular.svg";
+import Loading from "../components/Loading.vue";
+import Modal from "../components/Modal.vue";
 export default {
   name: "ForgotPassword",
   data() {
@@ -35,6 +37,8 @@ export default {
   },
   components: {
     email,
+    Modal,
+    Loading,
   },
 
   Loadingmethods: {
