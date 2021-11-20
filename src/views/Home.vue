@@ -18,15 +18,25 @@
         </div>
       </div>
     </div>
+    <div class="updates">
+      <div class="container">
+        <h2>Never miss a Post. Register for Account</h2>
+        <router-link class="router-button" to="#">
+          Register for Capital Blogs
+          <Arrow class="arrow arrow-light" />
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import BlogPost from "../components/BlogPost";
 import BlogCards from "../components/BlogCard";
+import Arrow from "../assets/Icons/arrow-right-light.svg";
 export default {
   name: "Home",
-  components: { BlogPost, BlogCards },
+  components: { BlogPost, BlogCards, Arrow },
   data() {
     return {
       welcomeScreen: {
@@ -81,6 +91,18 @@ export default {
     font-weight: 300;
     font-size: 28px;
     margin-bottom: 33;
+  }
+}
+.updates {
+  .container {
+    padding: 100px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: 800px) {
+      padding: 125px 25px;
+      flex-direction: row;
+    }
   }
 }
 </style>
