@@ -1,7 +1,6 @@
 <template>
   <div class="create-post">
     <BlogCoverPreview v-show="this.$store.state.blogPhotoPreview" />
-    <Loading v-show="loading" />
     <div class="container">
       <div :class="{ invisible: !error }" class="err-message">
         <p><span>Error:</span>{{ this.errorMsg }}</p>
@@ -36,10 +35,9 @@
         />
       </div>
       <div class="blog-actions">
-        <button @click="uploadBlog">Publish Blog</button>
-        <router-link class="router-button" :to="{ name: 'BlogPreview' }"
-          >Post Preview</router-link
-        >
+        <button>Publish Blog</button>
+        <router-link class="router-button" to="#">Post Preview</router-link>
+
       </div>
     </div>
   </div>
