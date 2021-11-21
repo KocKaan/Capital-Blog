@@ -12,6 +12,7 @@
             type="file"
             ref="blogPhoto"
             id="blog-photo"
+            @change="fileChange"
             accept=".png, .jpg, ,jpeg"
           />
           <button
@@ -57,6 +58,14 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    fileChange() {
+      this.file = this.$refs.blogPhoto.files[0];
+      const fileName = this.file.name;
+      this.$store.commit("fileNameChange", fileName);
+      this.$store.commit("createFileURL", URL.createObjectURL(this.file));
+    },
   },
   computed: {
     profileId() {
