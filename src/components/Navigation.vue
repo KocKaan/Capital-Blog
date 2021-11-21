@@ -14,7 +14,6 @@
             >Create Post</router-link
           >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
-
             >Login/Register</router-link
           >
         </ul>
@@ -45,12 +44,12 @@
                   <p>Profile</p>
                 </router-link>
               </div>
-              <div class="option">
+              <!-- <div v-if="admin" class="option">
                 <router-link class="option" :to="{ name: 'Admin' }">
                   <adminIcon class="icon" />
                   <p>Admin</p>
                 </router-link>
-              </div>
+              </div> -->
               <div @click="signOut" class="option">
                 <signOutIcon class="icon" />
                 <p>Sign Out</p>
@@ -69,7 +68,6 @@
           >Create Post</router-link
         >
         <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
-
           >Login/Register</router-link
         >
       </ul>
@@ -80,7 +78,7 @@
 <script>
 import menuIcon from "../assets/Icons/bars-regular.svg";
 import userIcon from "../assets/Icons/user-alt-light.svg";
-import adminIcon from "../assets/Icons/user-crown-light.svg";
+//import adminIcon from "../assets/Icons/user-crown-light.svg";
 import signOutIcon from "../assets/Icons/sign-out-alt-regular.svg";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -89,7 +87,7 @@ export default {
   components: {
     menuIcon,
     userIcon,
-    adminIcon,
+    //adminIcon,
     signOutIcon,
   },
   data() {
@@ -132,9 +130,9 @@ export default {
     user() {
       return this.$store.state.user;
     },
-    admin() {
-      return this.$store.state.profileAdmin;
-    },
+    // admin() {
+    //   return this.$store.state.profileAdmin;
+    // },
   },
 };
 </script>
