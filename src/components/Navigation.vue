@@ -14,6 +14,7 @@
             >Create Post</router-link
           >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
+
             >Login/Register</router-link
           >
         </ul>
@@ -68,6 +69,7 @@
           >Create Post</router-link
         >
         <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
+
           >Login/Register</router-link
         >
       </ul>

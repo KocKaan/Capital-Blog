@@ -2,12 +2,13 @@
   <div class="form-wrap">
     <form class="register">
       <p class="login-register">
-        Already have Account?
-        <router-link router="router-link" :to="{ name: `Login` }"
+
+        Already have an account?
+        <router-link class="router-link" :to="{ name: 'Login' }"
           >Login</router-link
         >
       </p>
-      <h2>Create your Capital Blog Account</h2>
+      <h2>Create your FireBlog Account</h2>
       <div class="inputs">
         <div class="input">
           <input type="text" placeholder="First Name" v-model="firstName" />
@@ -46,6 +47,7 @@ import user from "../assets/Icons/user-alt-light.svg";
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "../firebase/firebaseInit";
+
 
 export default {
   name: "Register",
@@ -99,6 +101,7 @@ export default {
   },
 };
 </script>
+
 
 <style lang="scss" scoped>
 .register {
