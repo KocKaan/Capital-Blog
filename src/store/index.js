@@ -51,7 +51,7 @@ export default new Vuex.Store({
     newBlogPost(state, payload) {
       state.blogHTML = payload;
     },
-    
+
     updateBlogTitle(state, payload) {
       state.blogTitle = payload;
     },
@@ -62,6 +62,10 @@ export default new Vuex.Store({
 
     createFileURL(state, payload) {
       state.blogPhotoFileURL = payload;
+    },
+
+    openPhotoPreview(state) {
+      state.blogPhotoPreview = !state.blogPhotoPreview;
     },
 
     toggleEditPost(state,payload){
