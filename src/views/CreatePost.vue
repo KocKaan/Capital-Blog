@@ -37,6 +37,7 @@
       <div class="blog-actions">
         <button>Publish Blog</button>
         <router-link class="router-button" to="#">Post Preview</router-link>
+
       </div>
     </div>
   </div>
