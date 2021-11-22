@@ -116,6 +116,11 @@ export default new Vuex.Store({
       state.postLoaded = true;
     },
 
+    async updatePost({ commit, dispatch }, payload) {
+      commit("filterBlogPost", payload);
+      await dispatch("getPost");
+    },
+
     async deletePost({ commit }, payload) {
       const getPost = await db.collection("blogPosts").doc(payload);
       await getPost.delete();
