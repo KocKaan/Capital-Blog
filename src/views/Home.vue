@@ -43,9 +43,9 @@ export default {
       welcomeScreen: {
         title: "Welcome!",
         blogPost:
-          "Weekly blog articles with all things programming including HTML, CSS, JavaScript and more. Register today to never miss a post!",
+          "This is a blog created for Dominion Capital where the weekly blogs on Finance will be published",
         welcomeScreen: true,
-        photo: "coding",
+        photo: "russia",
       },
     };
   },
