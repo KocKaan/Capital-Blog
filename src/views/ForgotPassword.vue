@@ -47,7 +47,6 @@ export default {
       modalActive: false,
       modalMessage: "",
       loading: null,
-
     };
   },
   components: {

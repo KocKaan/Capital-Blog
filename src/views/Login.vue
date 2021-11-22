@@ -7,7 +7,7 @@
           >Register</router-link
         >
       </p>
-      <h2>Login to FireBlog</h2>
+      <h2>Login to Capital Blogs</h2>
       <div class="inputs">
         <div class="input">
           <input type="text" placeholder="Email" v-model="email" />
