@@ -1,18 +1,20 @@
+
+   
 <template>
   <div class="home">
     <BlogPost v-if="!user" :post="welcomeScreen" />
     <BlogPost
       :post="post"
-      v-for="(post, index) in sampleBlogPost"
+      v-for="(post, index) in blogPostsFeed"
       :key="index"
     />
     <div class="blog-card-wrap">
       <div class="container">
-        <h3>View more recent Blogs</h3>
+        <h3>View More Recent Blogs</h3>
         <div class="blog-cards">
           <BlogCard
             :post="post"
-            v-for="(post, index) in sampleBlogCards"
+            v-for="(post, index) in blogPostsCards"
             :key="index"
           />
         </div>
@@ -20,10 +22,9 @@
     </div>
     <div v-if="!user" class="updates">
       <div class="container">
-        <h2>Never miss a Post. Register for Account</h2>
-        <router-link class="router-button" to="#">
-          Register for Capital Blogs
-          <Arrow class="arrow arrow-light" />
+        <h2>Never miss a Post. Register for your free account today!</h2>
+        <router-link class="router-button" :to="{ name: 'Register' }">
+          Register for Capital Blogs <Arrow class="arrow arrow-light" />
         </router-link>
       </div>
     </div>
@@ -40,31 +41,21 @@ export default {
   data() {
     return {
       welcomeScreen: {
-        title: "welcome!",
+        title: "Welcome!",
         blogPost:
-          "Weekly blog articles with all things programminig including HTML, CSS, JavaScript and more. Register today to never miss a post",
+          "Weekly blog articles with all things programming including HTML, CSS, JavaScript and more. Register today to never miss a post!",
         welcomeScreen: true,
         photo: "coding",
       },
-      sampleBlogPost: [
-        {
-          title: "This is filler title!",
-          blogHTML: "This is a filler blog post title!",
-          blogCoverPhoto: "beautiful-stories",
-        },
-        {
-          title: "This is filler title 2!",
-          blogHTML: "THis is a filler blog post title!",
-          blogCoverPhoto: "designed-for-everyone",
-        },
-      ],
     };
   },
   computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards;
+    blogPostsFeed() {
+      return this.$store.getters.blogPostsFeed;
     },
-
+    blogPostsCards() {
+      return this.$store.getters.blogPostsCards;
+    },
     user() {
       return this.$store.state.user;
     },
@@ -77,7 +68,7 @@ export default {
   h3 {
     font-weight: 300;
     font-size: 28px;
-    margin-bottom: 33;
+    margin-bottom: 32px;
   }
 }
 .updates {
@@ -94,21 +85,21 @@ export default {
       display: flex;
       font-size: 14px;
       text-decoration: none;
+      @media (min-width: 800px) {
+        margin-left: auto;
+      }
     }
-    @media (min-width: 800) {
-      margin-left: auto;
-    }
-  }
-  h2 {
-    font-weight: 300;
-    font-size: 32px;
-    max-width: 425px;
-    width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-    @media (min-width: 800px) {
-      text-align: initial;
-      font-size: 40px;
+    h2 {
+      font-weight: 300;
+      font-size: 32px;
+      max-width: 425px;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      @media (min-width: 800px) {
+        text-align: initial;
+        font-size: 40px;
+      }
     }
   }
 }

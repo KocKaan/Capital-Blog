@@ -3,15 +3,22 @@
     <div class="blog-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
-        <h2 v-else>{{ post.title }}</h2>
+        <h2 v-else>{{ post.blogTitle }}</h2>
         <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
-        <p class="content-preview" v-else>{{ post.blogHTML }}</p>
-        <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
-          Login/Register <Arrow class="arrow arrow-light" />
+        <p class="content-preview" v-else v-html="post.blogHTML"></p>
+        <router-link
+          class="link link-light"
+          v-if="post.welcomeScreen"
+          :to="{ name: 'Login' }"
+        >
+          Login/Register<Arrow class="arrow arrow-light" />
         </router-link>
-
-        <router-link class="link" v-else to="#">
-          View the Post <Arrow class="arrow" />
+        <router-link
+          class="link"
+          v-else
+          :to="{ name: 'ViewBlog', params: { blogid: this.post.blogID } }"
+        >
+          View The Post<Arrow class="arrow" />
         </router-link>
       </div>
     </div>
@@ -19,12 +26,9 @@
       <img
         v-if="post.welcomeScreen"
         :src="require(`../assets/blogPhotos/${post.photo}.jpg`)"
-      />
-      <img
-        v-else
-        :src="require(`../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)"
         alt=""
       />
+      <img v-else :src="post.blogCoverPhoto" alt="" />
     </div>
   </div>
 </template>
@@ -110,7 +114,7 @@ export default {
       }
       .link-light {
         &:hover {
-          border-bottom-color: #ffffff;
+          border-bottom-color: #ffff;
         }
       }
     }
@@ -120,7 +124,6 @@ export default {
     flex: 3;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
     @media (min-width: 700px) {
       order: 2;
     }
