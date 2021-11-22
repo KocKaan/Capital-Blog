@@ -5,7 +5,7 @@
         <Edit class="edit" />
       </div>
       <div class="icon">
-        <Delete class="delete" />
+        <Delete @click="deletePost" class="delete" />
       </div>
     </div>
     <img :src="post.blogCoverPhoto" alt="" />
@@ -38,6 +38,11 @@ export default {
     Arrow,
     Edit,
     Delete,
+  },
+  methods: {
+    deletePost() {
+      this.$store.dispatch("deletePost", this.post.blogID);
+    },
   },
   computed: {
     editPost() {
