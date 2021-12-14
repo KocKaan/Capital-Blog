@@ -1,6 +1,6 @@
 # Capital Blogs
 
-This blog is written for Dominion Capital. Uses the vue.js on frontend and firebase for the backed. Its not currently hosted on the web as it could cost money. All the functionalities work and the user could create an account to create new posts.
+This is a blog website where I share cool news about finance and tech. Uses the vue.js on frontend and firebase for the backed. Its not currently hosted on the web as it could cost money. All the functionalities work and the user could create an account to create new posts.
 
 ## Project setup
 
